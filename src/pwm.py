@@ -42,32 +42,35 @@ def init():
     with open("/sys/class/pwm/pwmchip0/pwm1/enable", 'w') as f:
         f.write("1")
 
+def saturation(u) :
+    return np.min(np.max(u, -1.0), 1.0)
+
 def u1_callback(data):
-    u1 = 500000 * data.data + 1500000
+    u1 = 500000 * saturation(data.data) + 1500000
     
 def u2_callback(data):
-    u2 = 500000 * data.data + 1500000
+    u2 = 500000 * saturation(data.data) + 1500000
 
-if __name__ == '__main__':
-    # Checcking if we have the root privileges
-    get_root_privilleges()
-    
-    # Cammand variables
-    u1, u2 = 1500000, 1500000
-    
-    # ROS
-    rospy.init_node('driver_node')
-    rospy.Subscriber("u1", Float64, u1_callback)
-    rospy.Subscriber("u2", Float64, u2_callback)
-    
-    r = rospy.Rate(20) # 20hz
-    
-    while not rospy.is_shutdown():
-        # Setting up the duty cycle
-        with open("/sys/class/pwm/pwmchip0/pwm0/duty_cycle", 'w') as f:
-            f.write(u1)
-        with open("/sys/class/pwm/pwmchip0/pwm1/duty_cycle", 'w') as f:
-            f.write(u2)
-            
-        # Sleeping
-        r.sleep()
+
+# Checking if we have the root privileges
+get_root_privilleges()
+
+# Cammand variables
+u1, u2 = 1500000, 1500000
+
+# ROS
+rospy.init_node('driver_node')
+rospy.Subscriber("u1", Float64, u1_callback)
+rospy.Subscriber("u2", Float64, u2_callback)
+
+r = rospy.Rate(20) # 20hz
+
+while not rospy.is_shutdown():
+    # Setting up the duty cycle
+    with open("/sys/class/pwm/pwmchip0/pwm0/duty_cycle", 'w') as f:
+        f.write(u1)
+    with open("/sys/class/pwm/pwmchip0/pwm1/duty_cycle", 'w') as f:
+        f.write(u2)
+        
+    # Sleeping
+    r.sleep()
