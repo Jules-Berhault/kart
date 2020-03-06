@@ -3,48 +3,75 @@ from roblib import *
 
 # Car variables
 L = 0.1
-dt = 0.01
+dt = 0.1
 old_theta = 0
 
 def f(X, U):
-    x, y, theta, v, delta = (X.flatten()).tolist()
+    x1, x2, x3, x4, x5 = (X.flatten()).tolist()
     u1, u2 = (U.flatten()).tolist()
-    return np.array([v*np.cos(delta)*np.cos(theta), v*np.cos(delta)*np.sin(theta), v*sin(delta)/L, u1, u2])
+    return np.array([x4*np.cos(x5)*np.cos(x3, x4*np.cos(x5)*np.sin(x3), x4*sin(x5)/L, u1, u2])
 
 def target(t):
-    R = 15
-    omega = 1
-    w = R * np.array([[np.cos(omega*t)], [np.sin(omega*t)]])
-    dw = R * omega * np.array([[-np.sin(omega*t)], [np.cos(omega*t)]])
-    return w, dw
+    R = 36.5
+    L = 84.39
+    speed = 10 
+    
+    d = (t*speed) % 400
+    if d < 84.39:
+        x = 36.5
+        y = d - 42.195
+        theta = np.pi/2
+        v = speed
+    elif d < 200:
+        x = 36.5*np.cos((d - 84.39)/36.5)
+        y = 36.5*np.sin((d - 84.39)/36.5) + 42.195
+        theta = np.pi/2 + np.arctan2(y - 42.195, x)
+        v = speed
+    elif d < 284.39:
+        x = -36.5
+        y = 242.195 - d
+        theta = - np.pi/2
+        v = speed
+    else:
+        x = -36.5*np.cos((d - 284.39)/36.5)
+        y = -36.5*np.sin((d - 284.39)/36.5) - 42.195
+        theta = np.pi/2 + np.arctan2(y + 42.195, x)
+        v = speed
+    return np.array([x, y, theta, v])
 
-def control(X, w, dw):
+def control(X, w):
     global old_theta
-    x, y, theta, v, delta = (X.flatten()).tolist()
-
-    a1, a2, a3, a4 = 1, 5, 1, 1/10
+    global L
+    x1, x2, x3, x4, x5 = X.flatten()
+    xc, yx, thetac, vc = w.flatten()
+    A = np.array([[np.sin(x4)/L, x4*np.sin(x5)/L], [1, 0]])
     
-    d = np.sqrt((w[0, 0]-x)**2 + (w[1, 0]-y)**2)
+    Y = np.array([[x3], [x4]])
+    Yp = np.array([[], []])
     
-    dtheta = -(theta - old_theta)/dt
-    old_theta = theta
-    
-    u = np.array([[a1 * d + a2 * (np.linalg.norm(dw) - v)], [a3 * sawtooth(np.arctan2(w[1, 0]-y, w[0, 0] - x) - theta) + a4 * dtheta]])
-    return u
+    return np.linalg.solve(A, v)
     
     
 if __name__ == "__main__":
-    X = np.array([15, -1, np.pi/2, 1, 0])
+    X = np.array([36.5, -42.195, np.pi/2, 10, 0])
     
-    ax = init_figure(-30, 30, -30, 30)
-    dt = 0.01
+    ax = init_figure(-100, 100, -100, 100)
+    dt = 1
+    
+    p = np.arange(0, 401, 0.1)
+    traj = []
+    for t in p:
+        traj.append([target(t)[0], target(t)[1]])
+    trajectory = np.array(traj)
+        
     for t in np.arange(0, 100, dt):
         clear(ax)
+        plt.plot(trajectory[:, 0], trajectory[:, 1], color="firebrick", alpha = 0.6)
+        w = target(t)
         
-        w, dw= target(t)
-        U = control(X, w, dw)
+        U = control(X, w)
         X = X + dt*f(X, U)
+        draw_tank(w, col="crimson", r=1)
+        #draw_tank(X, col='teal', r=5)
         
-        draw_tank(X)
-        plt.scatter(w[0], w[1], color='crimson')
         plt.pause(0.001)
