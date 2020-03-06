@@ -5,6 +5,8 @@ from roblib import *
 L = 0.1
 dt = 0.1
 old_theta = 0
+R = 15
+omega = 1
 
 def f(X, U):
     x1, x2, x3, x4, x5 = (X.flatten()).tolist()
@@ -12,6 +14,7 @@ def f(X, U):
     return np.array([x4*np.cos(x5)*np.cos(x3, x4*np.cos(x5)*np.sin(x3), x4*sin(x5)/L, u1, u2])
 
 def target(t):
+<<<<<<< HEAD
     R = 36.5
     L = 84.39
     speed = 10 
@@ -38,6 +41,12 @@ def target(t):
         theta = np.pi/2 + np.arctan2(y + 42.195, x)
         v = speed
     return np.array([x, y, theta, v])
+=======
+    
+    w = R * np.array([[np.cos(omega*t)], [np.sin(omega*t)]])
+    dw = R * omega * np.array([[-np.sin(omega*t)], [np.cos(omega*t)]])
+    return w, dw
+>>>>>>> 7c5c30aec6481f8c589f9d6ad164f2655dfde209
 
 def control(X, w):
     global old_theta
@@ -49,6 +58,7 @@ def control(X, w):
     Y = np.array([[x3], [x4]])
     Yp = np.array([[], []])
     
+<<<<<<< HEAD
     return np.linalg.solve(A, v)
     
     
@@ -70,6 +80,25 @@ if __name__ == "__main__":
         w = target(t)
         
         U = control(X, w)
+=======
+    u = np.array([[a1 * d + a2 * (np.linalg.norm(dw) - v)], [a3 * sawtooth(np.arctan2(w[1, 0]-y, w[0, 0] - x) - theta) + a4 * dtheta]])
+    return u
+
+
+if __name__ == "__main__":
+    X = np.array([15, -1, np.pi/2, 1, 0])
+    ax = init_figure(-30, 30, -30, 30)
+    dt = 0.01
+    angle = arange(0, 2*pi, 0.1)    
+    traceX = R*cos(angle)
+    traceY = R*sin(angle)
+    
+    for t in np.arange(0, 100, dt):
+        clear(ax)
+        plot(traceX, traceY, 'g')
+        w, dw= target(t)
+        U = control(X, w, dw)
+>>>>>>> 7c5c30aec6481f8c589f9d6ad164f2655dfde209
         X = X + dt*f(X, U)
         draw_tank(w, col="crimson", r=1)
         #draw_tank(X, col='teal', r=5)
