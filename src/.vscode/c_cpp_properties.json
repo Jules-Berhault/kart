@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "configurations": [
         {
             "browse": {
@@ -21,4 +22,21 @@
         }
     ],
     "version": 4
+=======
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/opt/ros/melodic/include/**",
+        "/home/quentin/Code/MiddleWare/WorkspaceROS/src/ddbot/include/**",
+        "/home/quentin/Code/MiddleWare/WorkspaceROS/src/tp2/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ]
+>>>>>>> 7145411c87126aed58901b1e29bce40142a38303
 }
