@@ -1,0 +1,6 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {2}Explications}{2}{section.2}
+\contentsline {section}{\numberline {3}Resultats}{2}{section.3}
+\contentsline {section}{\numberline {4}Discussions et Conclusion}{2}{section.4}
+\contentsline {section}{\numberline {A}Appendix}{2}{appendix.A}
