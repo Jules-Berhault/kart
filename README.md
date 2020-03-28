@@ -15,9 +15,18 @@ After the building of this car, we need to robotize it. In order to do that, we 
 
 | Sensors       | Used             | Dope-Level               |
 | ------------- |:----------------:|:------------------------:|
-| GNSS          |:x:               |:poop:                    |
-| Inertial Unit |:x:               |:sunglasses:              |
-| Pi camera     |:heavy_check_mark:|:turtle::boom::dash::poop:|
+| GNSS          |:x:               |:turtle::boom::dash::poop:|
+| Inertial Unit |:x:               |:rainbow:                 |
+| Pi camera     |:heavy_check_mark:|:unicorn:                 |
+
+We decided to use **ROS** (**R**obot **O**perating **S**ystem), the well-known Middleware for mobile robotics. We created our own nodes to control this robot.
+
+*Insert the node graph here*
+
+## Simulation
+A simulator is implemented in V-REP in order to check system behavior in simulation. This simulation is base interfaced with ROS via a LUA script which control the simulated car in the V-REP environment. It let us cerify our node without any changes because the low level nodes are replaced by the ROS-V-REP linker.
+
+*Insert the picture of the Simulation*
 
 ## Authors
 
