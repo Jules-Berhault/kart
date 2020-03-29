@@ -34,7 +34,7 @@ Here is a tracker for each task we have to do.
 | PWM driver      |Quentin     |:heavy_check_mark:|      |
 | CAO             |Jules       |:heavy_check_mark:|      |
 | Electronic board|Quentin     |:x:               |Lack of electronic items|
-| V-REP Simulator |Gwendal     |:recycle:         |      |
+| V-REP Simulator |Gwendal     |:x:         |      |
 | Report          |All         |:recycle:         |      |
 
 
@@ -45,11 +45,11 @@ A simulator is implemented in V-REP in order to check system behavior in simulat
 
 ## Authors
 
-* **Jules Bherault** - 
+* **Jules Berhault** - 
 * **Quentin Brateau** -  [Teusner](https://github.com/Teusner) :sunglasses:
-* **Paul-Antoine Le Tolguenec** - 
-* **Gwendal Priser** - [gwendalp](https://github.com/gwendalp)
-
+* **Paul-Antoine Le Tolguennec** - 
+* **Gwendal Priser** - [gwendalp](https://github.com/gwendalp) :ocean:
+* **Mamadou Dembele** -
 
 ## License
 
