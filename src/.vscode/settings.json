@@ -1,6 +1,10 @@
 {
     "python.autoComplete.extraPaths": [
+<<<<<<< HEAD
+        "/home/paul-antoine/workspaceRos/devel/lib/python2.7/dist-packages",
+=======
         "/home/quentin/Code/MiddleWare/WorkspaceROS/devel/lib/python2.7/dist-packages",
+>>>>>>> 7145411c87126aed58901b1e29bce40142a38303
         "/opt/ros/melodic/lib/python2.7/dist-packages"
     ]
 }

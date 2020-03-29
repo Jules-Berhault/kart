@@ -1,4 +1,28 @@
 {
+<<<<<<< HEAD
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/paul-antoine/workspaceRos/devel/include/**",
+                "/opt/ros/melodic/include/**",
+                "/home/paul-antoine/workspaceRos/src/tp1/include/**",
+                "/home/paul-antoine/workspaceRos/src/tp2/include/**",
+                "/home/paul-antoine/workspaceRos/src/tp3/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+=======
   "configurations": [
     {
       "browse": {
@@ -14,4 +38,5 @@
       "name": "ROS"
     }
   ]
+>>>>>>> 7145411c87126aed58901b1e29bce40142a38303
 }
