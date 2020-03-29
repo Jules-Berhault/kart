@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="kart" type="camera_node.py" name="Camera_node"/>
+    <node pkg="kart" type="controller.py" name="Controller_node"/>
+    <node pkg="kart" type="pwm.py" name="PWM_node"/>
+</launch>
