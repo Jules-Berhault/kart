@@ -1,7 +1,3 @@
 <launch>
-    <node pkg="kart" type="key_twist_teleop.py" name="Camera_node">
-    	<param name="_speed" type="double" value="1.0" />
-        <param name="_turn" type="double" value="0.5" />
-    </node>
     <node pkg="kart" type="pwm.py" name="PWM_node"/>
 </launch>
