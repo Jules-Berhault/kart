@@ -1,102 +1,74 @@
-
+#! /usr/bin/env python
 
 import numpy as np
 import cv2
 import sys
-""" from mrpiZ_lib import *
- """
 import rospy
 from std_msgs.msg import Float64
 
-dt=0.1
 
+if __name__ == "__main__":
+	# Node initalization
+	rospy.init_node('camera_node', anonymous=True)
+	pub_error = rospy.Publisher('error', Float64, queue_size=1000)
+	rate = rospy.Rate(10)
 
+	# image settings
+	WIDTH = 640
+	HEIGHT = 480
+	cam = cv2.VideoCapture(0)
+	cam.set(3, WIDTH)
+	cam.set(4, HEIGHT)
 
+	# Taking a matrix of size 5 as the kernel for morphomat
+	kernel = np.ones((30, 30), np.uint8)
 
+	while not rospy.is_shutdown():
+		# Reading camera flow picture by picture
+		ret_val, frame = cam.read()
+		# TODO Crop image with parameters
+		crop_img = frame[379:480, 0:640]
 
-""" initialisation du node """
-rospy.init_node('camera_node', anonymous=True)
+		# Convert to grayscale
+		gray = cv2.cvtColor(crop_img, cv2.COLOR_BGR2GRAY)
 
-""" creation publisher  """
-pub_error = rospy.Publisher('error', Float64,queue_size=1000)
-""" Rate """
-rate = rospy.Rate(1/dt) # 10hz
+		# Gaussian blur
+		blur = cv2.GaussianBlur(gray, (5, 5), 0)
 
-# image size
-WIDTH = 640
-HEIGHT = 480
+		# Color thresholding
+		ret, thresh = cv2.threshold(blur, 60, 255, cv2.THRESH_BINARY)
 
+		# Dilatation and Erosion
+		img_dilation = cv2.dilate(thresh, kernel, iterations=4)
+		img_erosion = cv2.erode(img_dilation, kernel, iterations=2)
 
-# Taking a matrix of size 5 as the kernel 
-kernel = np.ones((30,30), np.uint8) 
+		# Finding the contours of the frame
+		result = cv2.findContours(img_erosion.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+		contours, hierarchy = result if len(result) == 2 else result[1:3]
 
-cam = cv2.VideoCapture(0)
-cam.set(3, WIDTH)
-cam.set(4, HEIGHT)
+		# Find the biggest contour (if detected)
+		if len(contours) > 0:
+			c = max(contours, key=cv2.contourArea)
+			M = cv2.moments(c)
 
+			# Skip to avoid div by zero
+			if int(M['m00']) == 0:
+				continue
 
-while not rospy.is_shutdown():
-    ret_val, frame = cam.read()
-    crop_img = frame[379:480, 0:640]
-        
-    # Convert to grayscale
-    gray = cv2.cvtColor(crop_img, cv2.COLOR_BGR2GRAY)
-    
-    # Gaussian blur
-    blur = cv2.GaussianBlur(gray,(5,5),0)
-    
-    # Color thresholding
-    ret,thresh = cv2.threshold(blur,60,255,cv2.THRESH_BINARY)
+		# Getting the line center
+		try:
+			cx = int(M['m10']/M['m00'])
+			error = cx-WIDTH/2
 
-     #dilatation
-    img_dilation = cv2.dilate(thresh, kernel, iterations=4) 
-    
+			# Publishing Informations
+			rospy.loginfo(" error : %s", str(error), logger_name="Camera Node :")
+			pub_error.publish(error)
+		except:
+			rospy.logwarn("Unable to get the line center", logger_name="Camera Node :")
 
-    #erosion
-    img_erosion=cv2.erode(img_dilation, kernel, iterations=2) 
-    
+		"""backtorgb = cv2.cvtColor(img_erosion, cv2.COLOR_GRAY2RGB)
+		for i in range(-5, 5):
+			backtorgb[:, cx+i] = [255, 0, 0]
+		cv2.imshow('my webcam', backtorgb)"""
 
-    # Find the contours of the frame
-
-    result = cv2.findContours(img_erosion.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-    
-    contours, hierarchy = result if len(result) == 2 else result[1:3]
-
-
-
-    # Find the biggest contour (if detected)
-    if len(contours) > 0:
-        c = max(contours, key=cv2.contourArea)
-        M = cv2.moments(c)
-
-        # Skip to avoid div by zero
-        if int(M['m00']) == 0:
-            continue
-
-    
-
-    # Get the line center
-    try:
-        cx = int(M['m10']/M['m00'])
-        cy = int(M['m01']/M['m00'])
-        error=cx-WIDTH/2
-        print(error)
-        """ publication des commande moteur """
-        pub_error.publish(error)
-    except:
-        pass
-    backtorgb = cv2.cvtColor(img_erosion,cv2.COLOR_GRAY2RGB)
-    for i in range (-5, 5) :
-        for j in range (-5, 5) :
-            backtorgb[cy+j, cx+i] = [255, 0, 0]
-    cv2.imshow('my webcam', backtorgb)
-    
-    
-
-    if cv2.waitKey(1) == 27: 
-        break  # esc to quit
-    rate.sleep()
-cv2.destroyAllWindows()
-
-
-
+		rate.sleep()
