@@ -2,10 +2,6 @@ doc/build/*
 doc/rapport/.vscode/
 *.vscode/*
 *.idea/*
-
-*/rapport/Main.pdf
-*/rapport/Main.synctex.gz
-
 # TEX files
 ## Core latex/pdflatex auxiliary files:
 *.aux
