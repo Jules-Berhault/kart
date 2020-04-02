@@ -1,0 +1,107 @@
+
+\subsection{Main Board}
+\paragraph{For this project, we decided to use a \textit{Raspberry Pi 3B+}
+as main board. It will let us plug some sensors and control the motors of
+the car according to the wanted behavior we have programmed.}
+
+\paragraph{On this Raspberry Pi, we need to choose an Operating System. our
+choice was to use Ubuntu Mate because of its simplicity to install and its 
+polyvalence. It will let us do everything we want, like plug sensors, code
+any program to control our car, ... A preview of Ubuntu Mate is shown on
+the ~\ref{fig:ubuntu}}
+
+\paragraph{As an imposed figure for our project, we decided to use the 
+\textit{Robot Operating System} (ROS) as Middleware for this car. It's
+going to offer us some practical tools to code our pragrams easily.
+There is also some usefull community shared tools like \textit{rqt}
+or \textit{key\_telop} we will use in this project.}
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.3]{Images/Ubuntu_mate.png}
+    \end{center}
+    \caption{Ubuntu Mate screen}
+    \label{fig:ubuntu}
+\end{figure}
+
+\subsection{Sensors}
+
+\paragraph{This section present the main hardware configuration of the car. 
+For this project we have to choose which sensors we want in our 
+car in the following list ~\ref{fig:sensors}.}
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.6]{Images/Sensors.png}
+    \end{center}
+    \caption{The Sensors list available on our GitHub}
+    \label{fig:sensors}
+\end{figure}
+
+\paragraph{As it's shown we decided to choose neither the GNSS nor the Inertial 
+Units, mainly because of their accuracy. }
+
+\paragraph{Actually, for our problem we found that an accuracy of 1 meter
+for the \textit{GNSS} is too large because the car need to run in a 0.8 meter
+wide racing lane, following a line. This sensors is alos not able to know if
+the car position is correct.}
+
+\paragraph{For the \textit{Inertial Unit}, we found that this sensor is too noisy to
+give us any usefull informations about the state of our car. For instance the
+consecutive integration of the acceleration in order to get the speed and the
+position of the car leads to an important drift effect on our data. So this
+sensor is not currently able to to give any correct informations about the state
+of the car. Moreover, the acceleration of the car could be quite good after filtering
+if we only needed it. In our case the only usefull information is to know the
+position of our car in relation to the line.
+}
+
+\paragraph{That's why we decided to focus our attention on the camera. Because
+we are using a \textit{Raspberry Pi 3B+}, the camera we have choosen is the official 
+camera which can be pluged on the dedicated port on the board. This sensor is
+perfectly suited to our problem, because with an appropriated image processing
+we will be able to detect the line and to correct the car trajectory. 
+}
+
+\subsection{Configuration}
+
+\paragraph{Now we will explain how we configured our sensors in our project, to
+let them comunicate with the software and with the car.}
+
+\subsubsection{Pi Camera}
+\paragraph{The configuration of the camera on the raspberry pi is relatively simple. We
+used the \textit{raspi-config} utility to configure the camera. That's how we set up
+the camera on the Raspberry Pi.}
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.3]{Images/Raspi_config.png}
+    \end{center}
+    \caption{raspi-config utiliy on the Raspberry Pi}
+    \label{fig:raspi_config}
+\end{figure}
+
+\subsubsection{Hardware PWM}
+\paragraph{On Raspberry Pi board there is a lot of way to generate pwm signals.
+The most of the time, these methods are software based and so they are not
+accurate. With a lot of searches, we found a website who speak about the
+raspberry pi's hardware pwm signals. There is apparently an hardware pwm
+generator used by the bord to generate sounds. It's better to use hardware 
+generated pwm, because if the processor has a slow down and the interrupt
+is not correctly handled, the pwm duty cycle will not be very accurate and
+the car will not be able for instance to follow a straight line, because the
+bearing of the car is controled by a servomotor with a pwm signal.}
+
+\paragraph{So we decided to use this \href{https://disconnected.systems/blog/pi-zero-w-rover-setup/#moving-the-robot}{tutorial},
+which explain us how to setup pwm signals on the Raspberry Pi,
+and how to correctly configure the files to have a standard pwm signal
+which is generated. Then we need to give the rights to users for reading and
+writing in these files. All these bash command are in \textit{init\_pwm.sh}.
+}
+
+\paragraph{Then we have to add some automation. So we created a \textit{crontab}
+rule. That will automatically create all the required files and allow the permissions
+to every users. We just have to write in the file \textit{duty\_cycle} a value between
+$1.000.000$ and $2.000.000$, and the Raspberry Pi will read and adapt pwm signals
+in real time.
+}
