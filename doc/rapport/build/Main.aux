@@ -19,7 +19,20 @@
 \babel@aux{english}{}
 \@input{GradingRubric.aux}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Explications}{2}{section.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Resultats}{2}{section.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Discussions et Conclusion}{2}{section.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix}{2}{appendix.A}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Image Processing}{2}{section.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Data logging}{2}{subsection.2.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces collecting data}}{2}{figure.1}}
+\newlabel{fig:capture}{{1}{2}{collecting data}{figure.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{For the first part of this image processing, we had to collect images. So first we went into the environment in which the robot was going to evolve.}{2}{figure.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}pre binarization treatment}{3}{subsection.2.2}}
+\@writefile{toc}{\contentsline {paragraph}{In this part, we first had to perform a pre-binarization treatment in order to reduce post-binarization noise. So we used a Gaussian filter to blur the image. }{3}{section*.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}binarization}{3}{subsection.2.3}}
+\@writefile{toc}{\contentsline {paragraph}{Since the line we wanted to mark is white. An effective treatment is simply to switch to grey level. So for binarization, we switch the image to a grey level and threshold for a grey level that we have determined empirically. }{3}{section*.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}post binarization treatment}{3}{subsection.2.4}}
+\@writefile{toc}{\contentsline {paragraph}{In this part we performed a morphological treatment. There was still a lot of noise after binarization. So we made an opening. With a kernel in the shape of a rectangle (since it was the most efficient for this treatment). At the end of this treatment we obtain a well defined line which crosses the screen. }{3}{section*.7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}find the center of the line}{3}{subsection.2.5}}
+\@writefile{toc}{\contentsline {paragraph}{ In this last part, the contours are marked using a gradient method. Then the contours are sorted from the smallest to the largest. We recover the largest contour. And we recover the coordinates of the barycentre of the contour. Then the error is the difference between the center of the image and the coordinates of the pixel.}{3}{section*.8}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Explications}{3}{section.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Resultats}{3}{section.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussions et Conclusion}{3}{section.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix}{3}{appendix.A}}

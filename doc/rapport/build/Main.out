@@ -1,5 +1,11 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Explications}{}% 2
-\BOOKMARK [1][-]{section.3}{Resultats}{}% 3
-\BOOKMARK [1][-]{section.4}{Discussions et Conclusion}{}% 4
-\BOOKMARK [1][-]{appendix.A}{Appendix}{}% 5
+\BOOKMARK [1][-]{section.2}{Image Processing}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Data logging}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{pre binarization treatment}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{binarization}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{post binarization treatment}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{find the center of the line}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Explications}{}% 8
+\BOOKMARK [1][-]{section.4}{Resultats}{}% 9
+\BOOKMARK [1][-]{section.5}{Discussions et Conclusion}{}% 10
+\BOOKMARK [1][-]{appendix.A}{Appendix}{}% 11
