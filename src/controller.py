@@ -19,7 +19,7 @@ def compute_u2(e):
 if __name__ == "__main__":
     # Variables
     error = 0
-    u1, u2 = 0.1, 0
+    u1, u2 = 0, 0
 
     # ROS
     rospy.init_node('driver_node')
