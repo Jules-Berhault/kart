@@ -60,8 +60,8 @@ def imuCallback(msg):
     q.append(msg.orientation.z)
     q.append(msg.orientation.w)
 
-print(q)
-theta=Quaternion(q[0],q[1],q[2],q[3])
+
+theta=Quaternion(q[0],q[1],q[2],q[3])[2]
 print(theta)
 
 
