@@ -1,17 +1,49 @@
 \babel@toc {english}{}
-\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
-\contentsline {section}{\numberline {2}Image Processing}{2}{section.2}
-\contentsline {subsection}{\numberline {2.1}Data logging}{2}{subsection.2.1}
-\contentsline {paragraph}{For the first part of this image processing, we had to collect images. So first we went into the environment in which the robot was going to evolve.}{2}{figure.1}
-\contentsline {subsection}{\numberline {2.2}pre binarization treatment}{3}{subsection.2.2}
-\contentsline {paragraph}{In this part, we first had to perform a pre-binarization treatment in order to reduce post-binarization noise. So we used a Gaussian filter to blur the image. }{3}{section*.5}
-\contentsline {subsection}{\numberline {2.3}binarization}{3}{subsection.2.3}
-\contentsline {paragraph}{Since the line we wanted to mark is white. An effective treatment is simply to switch to grey level. So for binarization, we switch the image to a grey level and threshold for a grey level that we have determined empirically. }{3}{section*.6}
-\contentsline {subsection}{\numberline {2.4}post binarization treatment}{3}{subsection.2.4}
-\contentsline {paragraph}{In this part we performed a morphological treatment. There was still a lot of noise after binarization. So we made an opening. With a kernel in the shape of a rectangle (since it was the most efficient for this treatment). At the end of this treatment we obtain a well defined line which crosses the screen. }{3}{section*.7}
-\contentsline {subsection}{\numberline {2.5}find the center of the line}{3}{subsection.2.5}
-\contentsline {paragraph}{ In this last part, the contours are marked using a gradient method. Then the contours are sorted from the smallest to the largest. We recover the largest contour. And we recover the coordinates of the barycentre of the contour. Then the error is the difference between the center of the image and the coordinates of the pixel.}{3}{section*.8}
-\contentsline {section}{\numberline {3}Explications}{3}{section.3}
-\contentsline {section}{\numberline {4}Resultats}{3}{section.4}
-\contentsline {section}{\numberline {5}Discussions et Conclusion}{3}{section.5}
-\contentsline {section}{\numberline {A}Appendix}{3}{appendix.A}
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {section}{\numberline {2}Hardware}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Main Board}{3}{subsection.2.1}
+\contentsline {paragraph}{}{3}{section*.4}
+\contentsline {paragraph}{}{3}{section*.5}
+\contentsline {paragraph}{}{3}{section*.6}
+\contentsline {subsection}{\numberline {2.2}Sensors}{3}{subsection.2.2}
+\contentsline {paragraph}{}{3}{section*.7}
+\contentsline {paragraph}{}{3}{section*.8}
+\contentsline {paragraph}{}{3}{section*.9}
+\contentsline {paragraph}{}{3}{section*.10}
+\contentsline {paragraph}{}{5}{section*.11}
+\contentsline {subsection}{\numberline {2.3}Configuration}{5}{subsection.2.3}
+\contentsline {paragraph}{}{5}{section*.12}
+\contentsline {subsubsection}{\numberline {2.3.1}Pi Camera}{5}{subsubsection.2.3.1}
+\contentsline {paragraph}{}{5}{section*.13}
+\contentsline {subsubsection}{\numberline {2.3.2}Hardware PWM}{5}{subsubsection.2.3.2}
+\contentsline {paragraph}{}{5}{section*.14}
+\contentsline {paragraph}{}{6}{section*.15}
+\contentsline {paragraph}{}{6}{section*.16}
+\contentsline {section}{\numberline {3}Mechanical Architecture}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Reasons of an Overhaul}{6}{subsection.3.1}
+\contentsline {paragraph}{}{6}{section*.17}
+\contentsline {subsubsection}{\numberline {3.1.1}Problems identified and changes to be expected}{6}{subsubsection.3.1.1}
+\contentsline {paragraph}{}{6}{section*.18}
+\contentsline {subsection}{\numberline {3.2}Front Wheel Steering}{7}{subsection.3.2}
+\contentsline {paragraph}{}{7}{section*.19}
+\contentsline {subsection}{\numberline {3.3}Front Camera Support}{7}{subsection.3.3}
+\contentsline {paragraph}{}{7}{section*.20}
+\contentsline {subsection}{\numberline {3.4}Component Hosting Box}{8}{subsection.3.4}
+\contentsline {paragraph}{}{8}{section*.21}
+\contentsline {subsection}{\numberline {3.5}Expectations and Reality}{9}{subsection.3.5}
+\contentsline {paragraph}{}{9}{section*.22}
+\contentsline {section}{\numberline {4}Image Processing}{10}{section.4}
+\contentsline {subsection}{\numberline {4.1}Data logging}{10}{subsection.4.1}
+\contentsline {paragraph}{For the first part of this image processing, we had to collect images. So first we went into the environment in which the robot was going to evolve.}{10}{figure.8}
+\contentsline {subsection}{\numberline {4.2}pre binarization treatment}{10}{subsection.4.2}
+\contentsline {paragraph}{In this part, we first had to perform a pre-binarization treatment in order to reduce post-binarization noise. So we used a Gaussian filter to blur the image. }{10}{section*.24}
+\contentsline {subsection}{\numberline {4.3}binarization}{10}{subsection.4.3}
+\contentsline {paragraph}{Since the line we wanted to mark is white. An effective treatment is simply to switch to grey level. So for binarization, we switch the image to a grey level and threshold for a grey level that we have determined empirically. }{10}{section*.25}
+\contentsline {subsection}{\numberline {4.4}post binarization treatment}{10}{subsection.4.4}
+\contentsline {paragraph}{In this part we performed a morphological treatment. There was still a lot of noise after binarization. So we made an opening. With a kernel in the shape of a rectangle (since it was the most efficient for this treatment). At the end of this treatment we obtain a well defined line which crosses the screen. }{10}{section*.26}
+\contentsline {subsection}{\numberline {4.5}find the center of the line}{11}{subsection.4.5}
+\contentsline {paragraph}{ In this last part, the contours are marked using a gradient method. Then the contours are sorted from the smallest to the largest. We recover the largest contour. And we recover the coordinates of the barycentre of the contour. Then the error is the difference between the center of the image and the coordinates of the pixel.}{11}{section*.27}
+\contentsline {section}{\numberline {5}Explications}{11}{section.5}
+\contentsline {section}{\numberline {6}Resultats}{11}{section.6}
+\contentsline {section}{\numberline {7}Discussions et Conclusion}{11}{section.7}
+\contentsline {section}{\numberline {A}Appendix}{11}{appendix.A}
