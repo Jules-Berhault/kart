@@ -43,6 +43,8 @@ A simulator is implemented in V-REP in order to check system behavior in simulat
 
 *Insert the picture of the Simulation*
 
+https://www.youtube.com/watch?time_continue=44&v=_vIXo1TvG0w&feature=emb_logo
+
 ## Authors
 
 * **Jules Berhault** - 
