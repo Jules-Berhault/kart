@@ -45,7 +45,7 @@ A simulator is implemented in V-REP in order to check system behavior in simulat
 
 
 <p align="center">
-    <img src="https://github.com/gwendalp/kart/doc/rapport/Images/simulation_capture.png"> <br>
+    <img src="https://github.com/gwendalp/kart/blob/master/doc/rapport/Images/simulation_capture.png"> <br>
     <em>VREP simulator</em>
 </p>
 
