@@ -3,12 +3,19 @@
 ## Introduction
 This repository is a school project leaded at Ensta Bretagne about the building of a car and his automating. The car is a one-tenth scale replica and was built with 3d printing, turning and milling. Here is a picture of the final result of his building.
 
-*Insert the picture here*
+<p align="center">
+    <img src="https://github.com/gwendalp/kart/blob/master/doc/rapport/Images/Kart_overview_1.jpg"> <br>
+    <em>Real Kart 🚙</em>
+</p>
 
 ## Building
-This car was designed using Autodesk Inventor and the files are available in the cao folder.
+This car was designed using Autodesk Inventor and the files are available in the CAD folder.
 
-*Insert the picture of the cao here*
+<p align="center">
+    <img src="https://github.com/gwendalp/kart/blob/master/doc/rapport/Images/plan_global.png"> <br>
+    <em>CAD of the kart 🗺 </em>
+</p>
+
 
 ## Automating
 After the building of this car, we need to robotize it. In order to do that, we decided to use a Raspberry Pi 3B+ and some sensors.
