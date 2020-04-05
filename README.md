@@ -47,10 +47,11 @@ A simulator is implemented in V-REP in order to check system behavior in simulat
 <p align="center">
     <img src="https://github.com/gwendalp/kart/blob/master/doc/rapport/Images/simulation_capture.png"> <br>
     <em>VREP simulator</em>
+    <link href="https://www.youtube.com/watch?time_continue=44&v=_vIXo1TvG0w&feature=emb_logo" >
 </p>
 
 
-Voici le lien vers la vidéo:
+Voici le lien vers la vidéo 🏁 :camera_flash: ⏯ : 
 
 https://www.youtube.com/watch?time_continue=44&v=_vIXo1TvG0w&feature=emb_logo
 
