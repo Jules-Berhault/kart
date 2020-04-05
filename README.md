@@ -34,7 +34,7 @@ Here is a tracker for each task we have to do.
 | PWM driver      |Quentin     |:heavy_check_mark:|      |
 | CAO             |Jules       |:heavy_check_mark:|      |
 | Electronic board|Quentin     |:x:               |Lack of electronic items|
-| V-REP Simulator |Gwendal     |:x:         |      |
+| V-REP Simulator |Gwendal     |:heavy_check_mark:         |      |
 | Report          |All         |:recycle:         |      |
 
 
