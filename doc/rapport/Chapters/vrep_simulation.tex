@@ -1,0 +1,13 @@
+\subsection{Explaination}
+
+Based on the practical work made with Benoit Zerr, we got a realisitic and a track with a line in the middle of the track.
+The simulated in VREP car is equiped with a camera. Our VREP simulator is interfaced with ROS through the piece of LUA code :
+\texttt{rc\_car\_control\_ros.lua} et \texttt{rc\_car\_onboard\_cam.lua}.
+
+The VREP camera send a through a topic \texttt{image}, a picture of the front of the car. 
+Then the \texttt{camera\_node.py} subscriber process the image with OpenCV and return the position
+of the center line in the windows, then it compute an error, we want the line in the middle of the windows. 
+This error is sent through a topic \texttt{error}, the controller is suscribed to this topic,
+it generate a command thanks to a PD command law which is sent to VREP. And now the car can loop forever, and achieve 
+the perfect run in 1'15'' ! 🚙 🏁 🕙
+

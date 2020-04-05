@@ -10,12 +10,6 @@ polyvalence. It will let us do everything we want, like plug sensors, code
 any program to control our car, ... A preview of Ubuntu Mate is shown on
 the ~\ref{fig:ubuntu}
 
-\paragraph{}As an imposed figure for our project, we decided to use the 
-\textit{Robot Operating System} (ROS) as Middleware for this car. It's
-going to offer us some practical tools to code our pragrams easily.
-There is also some usefull community shared tools like \textit{rqt}
-or \textit{key\_telop} we will use in this project.
-
 \begin{figure}[!ht]
     \begin{center}
         \includegraphics[scale=0.3]{Images/Ubuntu_mate.png}
@@ -24,11 +18,27 @@ or \textit{key\_telop} we will use in this project.
     \label{fig:ubuntu}
 \end{figure}
 
+\paragraph{}As an imposed figure for our project, we decided to use the 
+\textit{Robot Operating System} (ROS) as Middleware for this car. It's
+going to offer us some practical tools to code our pragrams easily.
+There is also some usefull community shared tools like \textit{rqt}
+or \textit{key\_telop} we will use in this project. Then we decided to
+setup a graph node and to code these node in order to build our system
+as shown on the following graph node.
+
+\begin{figure}[!ht]
+    \begin{center}
+        \includegraphics[scale=0.3]{Images/node_graph.png}
+    \end{center}
+    \caption{Graph node of the kart}
+    \label{fig:graphnode}
+\end{figure}
+
 \subsection{Sensors}
 
 \paragraph{}This section present the main hardware configuration of the car. 
 For this project we have to choose which sensors we want in our 
-car in the following list ~\ref{fig:sensors}.
+car in the following list.
 
 \begin{figure}[!ht]
     \begin{center}

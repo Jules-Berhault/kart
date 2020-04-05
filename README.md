@@ -34,23 +34,16 @@ Here is a tracker for each task we have to do.
 | PWM driver      |Quentin     |:heavy_check_mark:|      |
 | CAO             |Jules       |:heavy_check_mark:|      |
 | Electronic board|Quentin     |:x:               |Lack of electronic items|
-| V-REP Simulator |Gwendal     |:x:         |      |
+| V-REP Simulator |Gwendal     |:heavy_check_mark:         |      |
 | Report          |All         |:recycle:         |      |
 
 
 ## Simulation
 A simulator is implemented in V-REP in order to check system behavior in simulation. This simulation is base interfaced with ROS via a LUA script which control the simulated car in the V-REP environment. It let us cerify our node without any changes because the low level nodes are replaced by the ROS-V-REP linker.
 
+[![video](https://github.com/gwendalp/kart/blob/master/doc/rapport/Images/track.gif)](https://www.youtube.com/watch?time_continue=10&v=_vIXo1TvG0w&feature=emb_logo "video")
 
-
-
-<p align="center">
-    <img src="https://github.com/gwendalp/kart/blob/master/doc/rapport/Images/simulation_capture.png"> <br>
-    <em>VREP simulator</em>
-</p>
-
-
-Voici le lien vers la vidéo:
+Voici le lien vers la vidéo 🏁 :camera_flash: ⏯ : 
 
 https://www.youtube.com/watch?time_continue=44&v=_vIXo1TvG0w&feature=emb_logo
 
