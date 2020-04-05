@@ -51,6 +51,8 @@ A simulator is implemented in V-REP in order to check system behavior in simulat
 </p>
 
 
+[![Everything Is AWESOME](https://github.com/gwendalp/kart/blob/master/doc/rapport/Images/simulation_capture.png)](https://www.youtube.com/watch?time_continue=44&v=_vIXo1TvG0w&feature=emb_logo "test")
+
 Voici le lien vers la vidéo 🏁 :camera_flash: ⏯ : 
 
 https://www.youtube.com/watch?time_continue=44&v=_vIXo1TvG0w&feature=emb_logo
