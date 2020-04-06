@@ -2,6 +2,7 @@
 
 import os
 import rospy
+import rospkg
 import threading
 
 from flask import Flask, render_template
@@ -24,6 +25,9 @@ rospy.Subscriber('/listener', Float64, ros_callback)
 
 def save_map():
     map = folium.Map(location=[45.5236, -122.6750])
+    rospack = rospkg.RosPack()
+    rospack.get_path('kart')
+    print(rospack.get_path('kart'))
     map.save('./templates/map.html')
 
 
