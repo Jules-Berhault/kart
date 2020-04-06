@@ -28,7 +28,7 @@ def hello_world():
 @app.route('/state')
 def state():
     print(os.getcwd())
-    return render_template("index.html")
+    return render_template("index.html", mot=[cmd_msg])
 
 
 if __name__ == '__main__':
