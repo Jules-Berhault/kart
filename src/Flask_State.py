@@ -19,7 +19,7 @@ threading.Thread(target=lambda: rospy.init_node('REST_node', disable_signals=Tru
 rospy.Subscriber('/listener', Float64, ros_callback)
 #pub = rospy.Publisher('/talker', Float64, queue_size=10)
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
