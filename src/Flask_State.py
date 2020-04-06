@@ -20,19 +20,23 @@ threading.Thread(target=lambda: rospy.init_node('REST_node', disable_signals=Tru
 rospy.Subscriber('/listener', Float64, ros_callback)
 #pub = rospy.Publisher('/talker', Float64, queue_size=10)
 
+
+
+def save_map():
+	map = folium.Map(location=[45.5236, -122.6750])
+    map.save('./templates/map.html')
+
+
 app = Flask(__name__, template_folder='../templates')
 
 @app.route('/')
 def home():
-    map = folium.Map(location=[45.5236, -122.6750])
-    map.save('./templates/map.html')
-    url_for('../templates', filename='map.html')
-    return render_template('state.html', iframe="map.html")
+    save_map()
+    return render_template('state.html')
 
 @app.route('/map')
-def state():
-    map = folium.Map(location=[45.5236, -122.6750])
-    map.save('./templates/map.html')
+def show_map():
+    save_map()
     return render_template('map.html')
 
 
