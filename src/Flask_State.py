@@ -27,7 +27,7 @@ def hello_world():
 
 @app.route('/state')
 def state():
-    mmots = ["bonjour", "à", "toi,", "visiteur."]
+    mots = ["bonjour", "a", "toi,", "visiteur."]
     return render_template('index.html', titre="Bienvenue !", mots=mots)
 
 
