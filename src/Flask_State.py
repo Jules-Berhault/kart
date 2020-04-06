@@ -4,7 +4,7 @@ import os
 import rospy
 import threading
 
-from flask import Flask
+from flask import Flask, render_template
 
 from std_msgs.msg import Float64
 
@@ -27,9 +27,7 @@ def hello_world():
 
 @app.route('/state')
 def state():
-    print(os.getcwd())
-    s = "<h1>{}</h1>".format(cmd_msg)
-    return s
+    return render_template("index.html")
 
 
 if __name__ == '__main__':
