@@ -32,6 +32,7 @@ def home():
 def state():
     map = folium.Map(location=[45.5236, -122.6750])
     map.save('./templates/map.html')
+    url_for('../templates', filename='map.html')
     return render_template('map.html')
 
 
