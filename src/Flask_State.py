@@ -19,11 +19,11 @@ def ros_callback(msg):
 
 threading.Thread(target=lambda: rospy.init_node('REST_node', disable_signals=True)).start()
 rospy.Subscriber('/listener', Float64, ros_callback)
+rospack = rospkg.RosPack()
 prefix = rospack.get_path('kart')
 
 def save_map():
     map = folium.Map(location=[45.5236, -122.6750])
-    rospack = rospkg.RosPack()
     map.save(prefix + '/templates/map.html')
 
 app = Flask(__name__, template_folder=prefix + '/templates')
