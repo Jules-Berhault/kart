@@ -27,7 +27,7 @@ def hello_world():
 
 @app.route('/state')
 def state():
-	print(os.getcwd())
+    print(os.getcwd())
     return render_template("templates/index.html")
 
 
