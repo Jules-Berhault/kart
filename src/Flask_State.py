@@ -28,7 +28,7 @@ def hello_world():
 
 @app.route('/state')
 def state():
-	iframe = folium.Map(location=[45.5236, -122.6750])
+    iframe = folium.Map(location=[45.5236, -122.6750])
     return render_template('state.html', iframe=iframe)
 
 
