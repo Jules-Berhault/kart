@@ -27,6 +27,7 @@ def hello_world():
 
 @app.route('/state')
 def state():
+	print(os.getcwd())
     s = "<h1>{}</h1>".format(cmd_msg)
     return s
 
