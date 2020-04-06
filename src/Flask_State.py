@@ -12,7 +12,7 @@ def ros_callback(msg):
     print(msg)
 
 threading.Thread(target=lambda: rospy.init_node('REST_node', disable_signals=True)).start()
-rospy.Subscriber('/listener', UInt32, ros_callback)
+rospy.Subscriber('/listener', Float64, ros_callback)
 pub = rospy.Publisher('/talker', Float64, queue_size=10)
 
 app = Flask(__name__)
