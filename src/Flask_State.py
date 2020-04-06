@@ -23,10 +23,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    # msg = Float64()
-    # msg.data = 1.0
-    # pub.publish(msg)
+    return "<h1>Salut</h1>"
 
+@app.route('/state')
+def state():
     mots = [str(cmd_msg)]
     return render_template('index.html', titre="Bienvenue !", mots=mots)
 
