@@ -13,7 +13,7 @@ cmd_msg = 0;
 
 def ros_callback(msg):
     global cmd_msg
-    cmd_msg = msg
+    cmd_msg = msg.data
 
 threading.Thread(target=lambda: rospy.init_node('REST_node', disable_signals=True)).start()
 rospy.Subscriber('/listener', Float64, ros_callback)
