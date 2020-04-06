@@ -3,15 +3,32 @@
     <head>
         <meta charset="utf-8" />
         <title>Kart</title>
+        <style type="text/css">
+            .body{
+                display: flex;
+                flex-direction: column;
+            }
+            #corps{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: stretch;
+            }
+            #corps.iframe{
+                flex-grow: 2;
+            }
+        </style>
     </head>
 
     <body>
         <h1>Kart</h1>
-        
-        <div>
+    
+        <div id="corps">
             <iframe src="/map", style="border:none;"></iframe>
+            <ul>
+                <li>Salut</li>
+                <li>Ca va</li>
+            </ul>
         </div>
-        <ul>
-        </ul>
     </body>
 </html>
