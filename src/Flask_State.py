@@ -19,7 +19,7 @@ threading.Thread(target=lambda: rospy.init_node('REST_node', disable_signals=Tru
 rospy.Subscriber('/listener', Float64, ros_callback)
 #pub = rospy.Publisher('/talker', Float64, queue_size=10)
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='./templates')
 
 @app.route('/')
 def hello_world():
@@ -28,7 +28,7 @@ def hello_world():
 @app.route('/state')
 def state():
     print(os.getcwd())
-    return render_template("templates/index.html")
+    return render_template("index.html")
 
 
 if __name__ == '__main__':
