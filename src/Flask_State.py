@@ -28,7 +28,7 @@ def hello_world():
     # pub.publish(msg)
 
     mots = [str(cmd_msg)]
-    return render_template('accueil.html', titre="Bienvenue !", mots=mots)
+    return render_template('index.html', titre="Bienvenue !", mots=mots)
 
 
 if __name__ == '__main__':
