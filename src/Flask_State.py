@@ -5,6 +5,7 @@ import rospy
 import threading
 
 from flask import Flask, render_template
+import folium
 
 from std_msgs.msg import Float64
 
@@ -27,7 +28,8 @@ def hello_world():
 
 @app.route('/state')
 def state():
-    return render_template("index.html", mots=[cmd_msg])
+	iframe = folium.Map(location=[45.5236, -122.6750])
+    return render_template('state.html', iframe=iframe)
 
 
 if __name__ == '__main__':
