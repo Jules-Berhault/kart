@@ -8,22 +8,28 @@ from flask import Flask
 
 from std_msgs.msg import Float64
 
+# Global Variables
+cmd_msg = 0;
+
 def ros_callback(msg):
-    print(msg)
+    global cmd_msg
+    cmd_msg = msg
 
 threading.Thread(target=lambda: rospy.init_node('REST_node', disable_signals=True)).start()
 rospy.Subscriber('/listener', Float64, ros_callback)
-pub = rospy.Publisher('/talker', Float64, queue_size=10)
+#pub = rospy.Publisher('/talker', Float64, queue_size=10)
 
 app = Flask(__name__)
 
 @App.route('/')
 def hello_world():
-    msg = Float64()
-    msg.data = 1.0
-    pub.publish(msg)
+    # msg = Float64()
+    # msg.data = 1.0
+    # pub.publish(msg)
 
-    return 'Hello, World!'
+    mots = [str(cmd_msg)]
+    return render_template('accueil.html', titre="Bienvenue !", mots=mots)
+
 
 if __name__ == '__main__':
     app.run(host=os.environ['ROS_IP'], port=3000)
