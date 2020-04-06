@@ -23,7 +23,7 @@ rospy.Subscriber('/listener', Float64, ros_callback)
 app = Flask(__name__, template_folder='../templates')
 
 @app.route('/')
-def state():
+def home():
     map = folium.Map(location=[45.5236, -122.6750])
     map.save('./templates/map.html')
     return render_template('state.html')
