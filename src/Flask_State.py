@@ -23,7 +23,7 @@ rospy.Subscriber('/listener', Float64, ros_callback)
 
 
 def save_map():
-	map = folium.Map(location=[45.5236, -122.6750])
+    map = folium.Map(location=[45.5236, -122.6750])
     map.save('./templates/map.html')
 
 
