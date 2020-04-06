@@ -17,7 +17,7 @@ pub = rospy.Publisher('/talker', Float64, queue_size=10)
 
 app = Flask(__name__)
 
-@App.route('/')
+@app.route('/')
 def hello_world():
     msg = Float64()
     msg.data = 1.0
@@ -26,4 +26,5 @@ def hello_world():
     return 'Hello, World!'
 
 if __name__ == '__main__':
-    app.run(host=os.environ['ROS_IP'], port=3000)
+    #app.run(host=os.environ['ROS_IP'], port=3000)
+    app.run(host='0.0.0.0', port=3000)
