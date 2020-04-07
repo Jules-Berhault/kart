@@ -71,19 +71,18 @@
         </div>
 
         <script language="javascript">
-			function reload_1() {
-			    $(document).ready(function() {
-			        $('#reload1').load('/ #reload1');
-			    });
-			};
-			function reload_2() {
-			    $(document).ready(function() {
+        	count = 5000;
+			function reload() {
+			    if((count % 500)==0){
 			        $('#reload2').load('/ #reload2');
-			    });
+				}
+				if((count % 2000)==0){
+			        $('#reload1').load('/ #reload1');
+				}
+				count = count + 500;
 			};
 			$('document').ready(function(){
-			    setInterval('reload_1();', 1000); // 0.5 seconde est abusé je sais.
-			    setInterval('reload_2();', 500);
+			    setInterval('reload();', 500);
 			});
 		</script>
 

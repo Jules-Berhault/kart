@@ -23,7 +23,7 @@ rospack = rospkg.RosPack()
 prefix = rospack.get_path('kart')
 
 def save_map():
-    map = folium.Map(location=[45.5236, -122.6750])
+    map = folium.Map(location=[48.418492, -4.473910])
     map.save(prefix + '/templates/map.html')
 
 app = Flask(__name__, template_folder=prefix + '/templates')
