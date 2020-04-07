@@ -49,12 +49,13 @@
                 margin: 1vh;
             }
         </style>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     </head>
 
     <body>    
         <div class="wrapper">
-            <iframe class="left" src="/map", style="border:none;"></iframe>
-            <div class="right">
+            <iframe class="left" id="reload1" src="/map", style="border:none;"></iframe>
+            <div class="right" id="reload2">
 
                 <h1 class="title">Kart</h1>
                 <h3 class="section">State</h3>
@@ -68,5 +69,23 @@
                     <h4 class="item">longitude : {{ long }}</h4>
             </div>
         </div>
+
+        <script language="javascript">
+			function reload_1() {
+			    $(document).ready(function() {
+			        $('#reload1').load('/ #reload1');
+			    });
+			};
+			function reload_2() {
+			    $(document).ready(function() {
+			        $('#reload2').load('/ #reload2');
+			    });
+			};
+			$('document').ready(function(){
+			    setInterval('reload_1();', 500); // 0.5 seconde est abusé je sais.
+			    setInterval('reload_2();', 3000);
+			});
+		</script>
+
     </body>
 </html>
