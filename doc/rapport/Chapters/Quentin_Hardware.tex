@@ -1,59 +1,27 @@
-\sesction{Hardware}
+\section{Hardware}
 
 \subsection{Introduction}
+In this section we will describe the hardware configuration of this project.
+The car is composed of a set of sensors, an interface board, and a board allowing
+software processing. The assembly must meet the constraints of the embedded
+systems, i.e. constraints of size, weight and power consumption.
 
 \subsection{Main Board}
-\paragraph{}For this project, we decided to use a \textit{Raspberry Pi 3B+}
-as main board. It will let us plug some sensors and control the motors of
-the car according to the wanted behavior we have programmed.
+For this project, we decided to use a \textit{Raspberry Pi 3B+}
+as main board. It will allow us to connect all the sensors necessary for the
+operation of the car, but also to carry out the software processing implemented in
+the car. \\
 
-\paragraph{}On this Raspberry Pi, we need to choose an Operating System. our
-choice was to use Ubuntu Mate because of its simplicity to install and its 
-polyvalence. It will let us do everything we want, like plug sensors, code
-any program to control our car, ... A preview of Ubuntu Mate is shown on
-the ~\ref{fig:ubuntu}
-
-\begin{figure}[!ht]
-    \begin{center}
-        \includegraphics[scale=0.3]{Images/Ubuntu_mate.png}
-    \end{center}
-    \caption{Ubuntu Mate screen}
-    \label{fig:ubuntu}
-\end{figure}
-
-\paragraph{}As an imposed figure for our project, we decided to use the 
-\textit{Robot Operating System} (ROS) as Middleware for this car. It's
-going to offer us some practical tools to code our pragrams easily.
-There is also some usefull community shared tools like \textit{rqt}
-or \textit{key\_telop} we will use in this project. Then we decided to
-setup a graph node and to code these node in order to build our system
-as shown on the following graph node.
-
-\begin{figure}[!ht]
-    \begin{center}
-        \includegraphics[scale=0.4]{Images/node_graph.png}
-    \end{center}
-    \caption{Graph node of the kart}
-    \label{fig:graphnode}
-\end{figure}
+On this \textit{Raspberry Pi} we will need to install an operating system in order
+to run our programs. Furthermore, the connectivity of this board is suited to our
+problem since we have USB ports as well as access to the GPIO pins that allow us
+to control several devices.
 
 \subsection{Sensors}
-
-\paragraph{}This section present the main hardware configuration of the car. 
-For this project we have to choose which sensors we want in our 
-car in the following list.
-
-\begin{figure}[!ht]
-    \begin{center}
-        \includegraphics[scale=0.6]{Images/Sensors.png}
-    \end{center}
-    \caption{The Sensors list available on our GitHub}
-    \label{fig:sensors}
-\end{figure}
-
-\paragraph{}
-As it's shown we decided to choose neither the GNSS nor the Inertial 
-Units, mainly because of their accuracy.
+We have at our service for this project 3 different sensors that will allow the robot
+to acquire information about its state: an \textit{Inertial Unit}, a 
+\textit{Global Navigation Satellite System} (GNSS) and a \textit{Camera}
+interfaced to the dedicated CSI port.
 
 \paragraph{}
 Actually, for our problem we found that an accuracy of 1 meter
