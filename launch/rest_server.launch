@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="kart" type="rest_server.py" name="rest_server_node"/>
+</launch>
