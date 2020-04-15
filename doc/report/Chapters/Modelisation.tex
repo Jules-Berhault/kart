@@ -1,11 +1,11 @@
 \section{Modelisation}
 
-\subsection{Modelisation}
+\subsection{A kinematic model for the car}
 The first thing to take control of a system is to understand how it
 works. That's what we're going to do for this car. Indeed to control
 it we will have to establish these equations in order to elaborate
-the commands which will be used to lead the robot. Here are the state
-equations for this car.
+the commands which will be used to lead the robot. \textbf{Figure}~\ref{fig:state}
+shows the cinematic equations of the car.
 
 \begin{figure}[!ht]
     \centering
@@ -22,7 +22,7 @@ equations for this car.
             \end{array}
             \right. $$
         
-        \caption{State equation of the car}
+        \caption{Equation of the car}
         \label{eqn:state}
     \end{subfigure}
     \hfill
@@ -32,6 +32,8 @@ equations for this car.
         \caption{Diagram of the car}
         \label{fig:raspi_config}
     \end{subfigure}
+    \caption{State equation of the car}
+    \label{fig:state}
 \end{figure}
 
 
@@ -39,7 +41,8 @@ equations for this car.
 In these equations $x_1$ and $x_2$ are respectively the x and y
 coordinates of the robot, $x_3$ is the heading of the robot, $x_4$
 represent the speed of the rear motor and $x_5$ is the steering angle
-of the car controlled by the front servomotor. In this system it is
+of the car controlled by the front servomotor. $L$ is the distance between
+the front and the back driving shafts. In this system it is
 important to identify the variables of interest. These are the variables
 that we will want to control. In our case we will be interested in the 
 speed of the car and its heading. \\
@@ -47,8 +50,8 @@ speed of the car and its heading. \\
 There is a usefully tool to use when you want to understand
 how to run a system from state equations. The differential delay
 graph allows you to relate the inputs to the outputs of the car.
-It actually represents the number of integrations that separate the
-inputs and outputs of the system. \textbf{Figure}~\ref{fig:diff_delay}
+Actually each new node represents an integration of the previous variable. There is also the link between
+inputs and outputs of our system. \textbf{Figure}~\ref{fig:diff_delay}
 is the differential delay graph for our car. On this graph we represented
 the two variables of interest with a double circle.
 
