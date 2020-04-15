@@ -82,4 +82,64 @@ the two variables of interest with a double circle.
     \label{fig:diff_delay}
 \end{figure}
 
+As we can see on the differential delay graph shown on \textbf{Figure}~\ref{fig:diff_delay},
+there is only one integration between the inputs and the $x_4$ output against a
+minimum of two integrations between the inputs and the $x_3$ output. We will therefore
+be able to act faster on the speed of the car than on its heading. Moreover we
+notice that to change the orientation of the car, we need both inputs. Indeed,
+the orientation of the front direction has no effect on the orientation of the
+car if it is motionless.
+
+\subsection{Simple law of control}
+
+In the case of a system that was originally built to be driven by a human, reference
+\cite{robmooc} tells us that it is possible to develop simple controls that would
+imitate the behaviour of a human pilot. Indeed, by following thetwo principles stated below,
+it is possible to take control of the car in a very simplistic but at least functional way.
+
+\begin{itemize}
+    \item \textbf{First principles} The speed of the car must be constant and not null.
+    \item \textbf{Second principles} The further the car is from the target, the more the car will turn.
+\end{itemize}
+
+With the first principle, we ensure that the car will run at all times, and therefore that
+the action on the steering will allow the car's heading to be adjusted. The second principle
+simply indicates that the further the car moves to the right of the line, the more it will 
+turn to the left and vice versa. Thus the car will tend to return closer to the line.
+
+According to reference 2, it is necessary to take the arctangent of the error in order to
+have a saturation effect on the control. The error here is of course the distance between
+the center of the car and the center of the line. We have chosen the arctangent shown in
+\textbf{Figure}~\ref{fig:arctan}.
+
+\begin{figure}[!ht]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{acc_a.png}
+    \end{center}
+    \caption{Arctan control saturation for car steering}
+    \label{fig:arctan}
+\end{figure}
+
+In conclusion, noting $e$ the error and $v_0$ the desired speed which will be constant,
+this simple control law will come from the equations~\ref{eqn:simple_law}.
+
+\begin{equation}
+    \label{eqn:simple_law}
+    \left\{
+        \begin{array}{c @{=} l}
+            u_1\ & \ v_0 \\
+            u_2\ & \ arctan(e)
+        \end{array}
+    \right. 
+\end{equation}
+
+\subsection{Guidance of the car}
+The control law of the previous section is very effective in case the line is visible
+by the car. However, there may be cases where the car has moved away from this line.
+The requirement XXXXXXXXXXX in the requirements diagram tells us that the car must be
+able to make the turn even if the car has deviated slightly from the line. The car will
+be able to use virtual GPS markers that will be placed along the route to guide it back
+and forth along the line. This control law should be seen as something more advanced,
+which will allow the system to truly achieve its mission.
+
 \newpage
