@@ -17,7 +17,7 @@ Then the \texttt{camera\_node} subscriber process the image with OpenCV and retu
 of the barycenter of the line (red in the figure \ref{fig:command_explanation}), then it compute an error, we want the barycenter of line in the middle of the windows, as it's shown on figure \ref{fig:command_explanation}. 
 This error is sent through a topic \texttt{error}, the controller is suscribed to this topic,
 it generate a command thanks to a PD command law which is sent to VREP. And now the car can loop forever, and achieve 
-the perfect run in 1'15'' ! 🚙 🏁 🕙
+the perfect run in 1'15'' !
 
 \subsection{Regulation}
 \begin{figure}[ht!]
@@ -33,7 +33,7 @@ Therefor we compute an error : $e = (width/2 - c_x) + (height/2 - c_y)$ and then
 $u = K_p e + K_d \frac{de}{dt}$. This command is computed in the controller and sent to vrep.
 
 
-The result in video : \footnote{\url{https://www.youtube.com/watch?time_continue=10&v=_vIXo1TvG0w&feature=emb_logo} ⏯}  
+The result in video : \footnote{\url{https://www.youtube.com/watch?time_continue=10&v=_vIXo1TvG0w&feature=emb_logo}}  
 
 
 
