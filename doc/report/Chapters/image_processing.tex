@@ -1,3 +1,16 @@
+
+
+
+\paragraph{}
+To carry out the image processing we used very simple theoretical notions. The library we used is open cv. The figure below summarizes our image processing.
+\begin{figure}[ht!]
+    \begin{center}
+        \includegraphics[scale=0.3]{Images/diagramme.png}
+    \end{center}
+    \caption{image processed}
+    \label{fig:img_processing}
+\end{figure}
+
 \subsection{Data logging}
 \paragraph{}
 For the first part of this image processing, we had to collect images.
@@ -33,3 +46,6 @@ In this last part, the contours are marked using a gradient method. Then the con
 We recover the largest contour.
 And we recover the coordinates of the barycentre of the contour.
 Then the error is the difference between the center of the image and the coordinates of the pixel.
+The problem with this method is that with the barycentre we have a regulation on a point in the centre of the image. And therefore, we don't use all the data we have.
+So we decided to use the highest points of the contour.
+Indeed, the position of the center of the line at the highest point of the image gives us an idea of the evolution of the road at the moment. From now on we use the horizon. It allows us to get information further into the "future". And so it allows for better regulation and therefore to go faster.
