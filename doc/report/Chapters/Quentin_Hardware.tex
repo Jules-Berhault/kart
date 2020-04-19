@@ -22,74 +22,27 @@ to control several devices.
 We have at our service for this project 3 different sensors that will allow the robot
 to acquire information about its state: 
 
-\paragraph{}
-Actually, for our problem we found that an accuracy of 1 meter
-for the \textit{GNSS} is too large because the car need to run in a 0.8 meter
-wide racing lane, following a line. This sensors is alos not able to know if
-the car position is correct.
+\paragraph{GNSS}
+Provides access to the latitude and longitude of the car. In combination with a Kalman filter, it satisfies the need to know the position of the car. It could also be useful in cases where the car loses track of the line, in order to come back to it.
 
-\paragraph{}
-For the \textit{Inertial Unit}, we found that this sensor is too noisy to
-give us any usefull informations about the state of our car. For instance the
-consecutive integration of the acceleration in order to get the speed and the
-position of the car leads to an important drift effect on our data. So this
-sensor is not currently able to to give any correct informations about the state
-of the car. Moreover, the acceleration of the car could be quite good after filtering
-if we only needed it. In our case the only usefull information is to know the
-position of our car in relation to the line.
+\paragraph{Inertial Unit}
+Allows access to the car's acceleration. This is useful to limit the car's acceleration and thus prevent the car from skidding in its path. However, we do not have it available at the moment, so we have not been able to implement it within this system.
 
-\paragraph{}
-That's why we decided to focus our attention on the camera. Because
-we are using a \textit{Raspberry Pi 3B+}, the camera we have choosen is the official 
+\paragraph{Camera}
+Because we are using a \textit{Raspberry Pi 3B+}, the camera we have choosen is the official 
 camera which can be pluged on the dedicated port on the board. This sensor is
 perfectly suited to our problem, because with an appropriated image processing
-we will be able to detect the line and to correct the car trajectory.
+we will be able to detect the line and to correct the car trajectory.The setting is quite simple and is done via the \textit{raspi-config} menu. Moreover the ROS hardware node \textit{cv\_camera} that we found interfaces automatically with the camera connected to the dedicated CSI port. So we just have to get the image on a topic to do the image processing.
 
-\subsection{Configuration}
-\paragraph{}
-Now we will explain how we configured our sensors in our project, to
-let them comunicate with the software and with the car.
+\subsection{Actuators}
+In order to manage the direction and speed of the car, we need to be able to generate PWM signals. The first signal will control the ESC that manages the rear engine. The second signal to be generated will allow to manage the steering of the car via the control of the front servomotor.
 
-\subsubsection{Pi Camera}
-\paragraph{}
-The configuration of the camera on the raspberry pi is relatively simple. We
-used the \textit{raspi-config} utility to configure the camera. That's how we set up
-the camera on the Raspberry Pi.
-
-\begin{figure}[!ht]
-    \begin{center}
-        \includegraphics[scale=0.3]{Images/Raspi_config.png}
-    \end{center}
-    \caption{raspi-config utiliy on the Raspberry Pi}
-    \label{fig:raspi_config}
-\end{figure}
-
-\subsubsection{Hardware PWM}
-\paragraph{}
-On Raspberry Pi board there is a lot of way to generate pwm signals.
-The most of the time, these methods are software based and so they are not
-accurate. With a lot of searches, we found a website who speak about the
-raspberry pi's hardware pwm signals. There is apparently an hardware pwm
-generator used by the bord to generate sounds. It's better to use hardware 
-generated pwm, because if the processor has a slow down and the interrupt
-is not correctly handled, the pwm duty cycle will not be very accurate and
+On a \textit{Raspberry Pi} board there is several way to generate pwm signals.
+The most of the time, these methods are software-based. It's better to use hardware 
+generated pwm, because if there is a high CPU usage, interrupts
+will not be correctly handled, the pwm duty cycle will not be very accurate and
 the car will not be able for instance to follow a straight line, because the
 bearing of the car is controled by a servomotor with a pwm signal.
 
-\paragraph{}So we decided to use this tutorial : \cite{pi_pwm}, 
-which explain us how to setup pwm signals on the Raspberry Pi,
-and how to correctly configure the files to have a standard pwm signal
-which is generated. Then we need to give the rights to users for reading and
-writing in these files. All these bash command are in \textit{init\_pwm.sh}.
-
-\paragraph{}
-Then we have to add some automation. So we created a \textit{crontab} rule.
-That will automatically create all the required files and allow the permissions
-to every users. We just have to write in the file \textit{duty\_cycle} a value between
-$1.000.000$ and $2.000.000$, and the Raspberry Pi will read and adjust pwm signals
-in real time.
-
-\paragraph{}
-Last but not least, we setup an autologin in order to open a session automatically
-when the Raspberry Pi boot. That's very usefull in order to launch our programms
-easily on boot and without any keyboard, mouse or monitor.
+According to this article \cite{pi_pwm}, there are two hardware PWM pins on a \textit{Raspberry Pi 3B+}. Some automation was required to set up the file system to allow the use of hardware PWM. So we had to use crontabs to keep the installation up and running.
+After this installation the pwm is operational and allows us to fully control the rear engine and servo motor of the car.

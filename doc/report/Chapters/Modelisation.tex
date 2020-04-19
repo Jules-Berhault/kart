@@ -111,12 +111,15 @@ turn to the left and vice versa. Thus the car will tend to return closer to the 
 According to reference 2, it is necessary to take the arctangent of the error in order to
 have a saturation effect on the control. The error here is of course the distance between
 the center of the car and the center of the line. We have chosen the arctangent shown in
-\textbf{Figure}~\ref{fig:arctan}.
+\textbf{Figure}~\ref{fig:arctan}. With this function, we are sure that the order law will
+not diverge, even if the line is far from the center of the picture.
 
 \begin{figure}[!ht]
-    \begin{center}
-        \includegraphics[width=0.8\textwidth]{acc_a.png}
-    \end{center}
+    \begin{center}\begin{tikzpicture}
+        \begin{axis}[xmin=-5, xmax=5, ymin=-2, ymax=2, samples=50, grid=both]
+            \addplot[mark=none,color=blue, samples=500]{rad(atan(x))};
+          \end{axis}
+    \end{tikzpicture}\end{center}
     \caption{Arctan control saturation for car steering}
     \label{fig:arctan}
 \end{figure}
