@@ -1,16 +1,17 @@
 \section{Hardware}
 
 \subsection{Introduction}
-In this section we will describe the hardware configuration of this project.
-The car is composed of a set of sensors, an interface board, and a board allowing
-software processing. The assembly must meet the constraints of the embedded
-systems, i.e. constraints of size, weight and power consumption.
+
+This section will present the hardware architecture of this project. The assembly must meet the constraints of the embedded
+systems, i.e. constraints of size, weight and power consumption. As shown in
+figure 1, the car is based on the Raspberry Pi 3B+ board and has a rear engine
+managed by an ESC and a servo motor to control the steering at the front. Finally,
+as far as sensors are concerned, we have at our disposition an \textit{Inertial Unit}, a 
+\textit{Global Navigation Satellite System} (GNSS) and a \textit{Camera}
+interfaced to the dedicated CSI port.
+
 
 \subsection{Main Board}
-For this project, we decided to use a \textit{Raspberry Pi 3B+}
-as main board. It will allow us to connect all the sensors necessary for the
-operation of the car, but also to carry out the software processing implemented in
-the car. \\
 
 On this \textit{Raspberry Pi} we will need to install an operating system in order
 to run our programs. Furthermore, the connectivity of this board is suited to our
@@ -19,9 +20,7 @@ to control several devices.
 
 \subsection{Sensors}
 We have at our service for this project 3 different sensors that will allow the robot
-to acquire information about its state: an \textit{Inertial Unit}, a 
-\textit{Global Navigation Satellite System} (GNSS) and a \textit{Camera}
-interfaced to the dedicated CSI port.
+to acquire information about its state: 
 
 \paragraph{}
 Actually, for our problem we found that an accuracy of 1 meter
