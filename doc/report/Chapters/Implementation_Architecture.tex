@@ -49,4 +49,34 @@ the mission. It will determine the right command law to control the robot accord
 robot can perceive from its environment. There is also a front-end server that allows us to have
 a feedback, a graphical user interface to know the state of the robot.
 
+
+We have also implemented a user interface for providing feedback. Indeed, we
+thought it was important for the user to be able to have an idea of the
+different parameters of the car, such as its position, its acceleration or
+the image the car sees.
+
+So we used the Flask Framework and made a link with ROS within a node.
+Flask allows to set up a web server on the car. An http request can be
+sent from a browser and allows access to this information. We also used
+the Folium library in python to provide a map to see the trajectory of
+the car as shown in \textbf{Figure}~\ref{fig:flask}.
+
+\begin{figure}[!ht]
+    \begin{center}
+        \includegraphics[width=\textwidth]{Images/Flask_server.png}
+    \end{center}
+    \caption{Flask webserver for feedback}
+    \label{fig:flask}
+\end{figure}
+
+The problem is that currently we don't have any GPS nor inertial unit.
+So we can't have this live feedback, but it is still possible to provide
+fake data which allowed us to validate the operation of this web server.
+
+To conclude, we can notice the presence of this architecture in two loops. We have a small loop formed
+by the camera, image processing, controller and pwm nodes, and a much larger loop involving
+the gps and the finite state machine. This relates well the will to want to achieve the
+global mission by taking into account all the cases, to always have a command to give to
+the car.
+
 \newpage
