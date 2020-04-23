@@ -1,8 +1,22 @@
-To conclude, we think that we already have a strong basis for this project, particularly
-with the ROS structure  which is already setup. Then we have to perform test with the
-real system because the simulation is correctly working and a good proof of concept, 
-but we lnow too that simulation and reality are always different. We have to do some
-improvements on our projetc too, like adding an mission controler in order to control the
-robot in some cases where we couldn't use the line following command, for instance when the 
-camera is not seeing any lines, and we ha to add a GUI in order to show the kart state
-like his position, is speed and the circuit.
+In conclusion, we have first established the requirements of this
+system. The main objectives are to ensure that the car performs
+laps of the track, regardless of its geometry, in autonomy and as
+quickly as possible. Then the use of ROS allowed us to separate the 
+functionalities in different nodes in order to facilitate the
+development of the system. This allowed us to divide the work
+but also to be more efficient in the development of the software
+architecture of the car. Then we made a simulator that allowed
+us to validate the different requirements of this system. It was
+very useful in the current context which did not allow us to test
+the car in a real environment. We were able to validate a minimum
+speed criterion of $3 m.s^{-1}$, because we were able to push the speed
+on the simulation up to $6 m.s^{-1}$. Then the range was checked as the 
+car was able to finish the lap in simulation. However at the moment
+the car must not lose sight of the line of sight, otherwise it
+will not be able to steer anymore. That's why we would have liked
+to use the GPS implementation we could have done. Indeed our idea
+would have been to use the previous GPS positions that would have
+been made in previous laps in order to be able to come back on the
+line in case we lost it. This would have meant that at every moment
+the car would have had a command to give to the actuators.
+
