@@ -49,4 +49,10 @@ the mission. It will determine the right command law to control the robot accord
 robot can perceive from its environment. There is also a front-end server that allows us to have
 a feedback, a graphical user interface to know the state of the robot.
 
+To conclude, we can notice the presence of this architecture in two loops. We have a small loop formed
+by the camera, image processing, controller and pwm nodes, and a much larger loop involving
+the gps and the finite state machine. This relates well the will to want to achieve the
+global mission by taking into account all the cases, to always have a command to give to
+the car.
+
 \newpage
