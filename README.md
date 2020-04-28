@@ -48,8 +48,6 @@ Here is a tracker for each task we have to do.
 ## Simulation
 A simulator is implemented in V-REP in order to check system behavior in simulation. This simulation is base interfaced with ROS via a LUA script which control the simulated car in the V-REP environment. It let us cerify our node without any changes because the low level nodes are replaced by the ROS-V-REP linker.
 
-[![video](https://github.com/gwendalp/kart/blob/master/doc/report/Images/track.gif)(https://www.youtube.com/watch?time_continue=10&v=_vIXo1TvG0w&feature=emb_logo "video")
-
 [![video](https://github.com/gwendalp/kart/blob/master/doc/report/Images/track.gif)](https://www.youtube.com/watch?time_continue=10&v=_vIXo1TvG0w&feature=emb_logo "video")
 
 Here is the link toward the YouTube video 🏁 :camera_flash: ⏯ : 
