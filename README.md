@@ -4,7 +4,7 @@
 This repository is a school project leaded at Ensta Bretagne about the building of a car and his automating. The car is a one-tenth scale replica and was built with 3d printing, turning and milling. Here is a picture of the final result of his building.
 
 <p align="center">
-    <img src="https://github.com/gwendalp/kart/blob/master/doc/rapport/Images/Kart_overview_1.jpg"> <br>
+    <img src="https://github.com/gwendalp/kart/blob/master/doc/report/Images/Kart_overview_1.jpg"> <br>
     <em>Real Kart 🚙</em>
 </p>
 
@@ -12,7 +12,7 @@ This repository is a school project leaded at Ensta Bretagne about the building 
 This car was designed using Autodesk Inventor and the files are available in the CAD folder.
 
 <p align="center">
-    <img src="https://github.com/gwendalp/kart/blob/master/doc/rapport/Images/plan_global.png"> <br>
+    <img src="https://github.com/gwendalp/kart/blob/master/doc/report/Images/plan_global.png"> <br>
     <em>CAD of the kart 🗺 </em>
 </p>
 
@@ -48,7 +48,7 @@ Here is a tracker for each task we have to do.
 ## Simulation
 A simulator is implemented in V-REP in order to check system behavior in simulation. This simulation is base interfaced with ROS via a LUA script which control the simulated car in the V-REP environment. It let us cerify our node without any changes because the low level nodes are replaced by the ROS-V-REP linker.
 
-[![video](https://github.com/gwendalp/kart/blob/master/doc/rapport/Images/track.gif)](https://www.youtube.com/watch?time_continue=10&v=_vIXo1TvG0w&feature=emb_logo "video")
+[![video](https://github.com/gwendalp/kart/blob/master/doc/report/Images/track.gif)](https://www.youtube.com/watch?time_continue=10&v=_vIXo1TvG0w&feature=emb_logo "video")
 
 Here is the link toward the YouTube video 🏁 :camera_flash: ⏯ : 
 
